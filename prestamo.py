@@ -35,6 +35,34 @@ def mostrar_libros():
         print("Género:", libro["género"])
         print("")
 
+def prestar_libro():
+    if not libros:
+        print("\n📚 No hay libros disponibles para prestar.")
+        return
+
+    print("\n📚 Libros disponibles para prestar:")
+    disponibles = [libro for libro in libros if not libro["prestado"]]
+
+    if not disponibles:
+        print("Todos los libros están prestados.")
+        return
+
+    for i, libro in enumerate(disponibles, start=1):
+        print(f"{i}. {libro['nombre']} ({libro['año']}) - {libro['género']}")
+
+    try:
+        opcion = int(input("Ingresa el número del libro que deseas prestar: "))
+        if 1 <= opcion <= len(disponibles):
+            libro_a_prestar = disponibles[opcion - 1]
+            libro_a_prestar["prestado"] = True
+            print(f"\n✅ Has prestado el libro: {libro_a_prestar['nombre']}")
+        else:
+            print("❌ Opción inválida.")
+    except ValueError:
+        print("❌ Entrada no válida. Debes ingresar un número.")
+
+
+
 # Menu de libros
 def menu():
     while True:
@@ -52,7 +80,7 @@ def menu():
         elif opcion == "2":
             mostrar_libros()
         elif opcion == "3":
-            print("Función para prestar un libro")
+            prestar_libro()
         elif opcion == "4":
             print("Función para devolver un libro")
         elif opcion == "5":
