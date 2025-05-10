@@ -1,3 +1,25 @@
+# Lista vacia
+libros = []
+
+def ingresar_libro():
+    print("\n--- Ingresar un nuevo libro ---")
+    nombre = input("Nombre del libro: ")
+    editorial = input("Editorial: ")
+    año = input("Año de publicación: ")
+    genero = input("Género: ")
+
+    libro = {
+        "nombre": nombre,
+        "editorial": editorial,
+        "año": año,
+        "género": genero,
+        "prestado": False
+    }
+
+    libros.append(libro)
+    print()
+    print(f"📚 Libro '{nombre}' agregado exitosamente.")
+
 
 # Menu de libros
 def menu():
@@ -12,7 +34,7 @@ def menu():
         opcion = input("Elige una opción: ")
 
         if opcion == "1":
-            print("Función para ingresar un libro")
+            ingresar_libro()
         elif opcion == "2":
             print("Función para mostrar un libro")
         elif opcion == "3":
