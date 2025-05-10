@@ -21,6 +21,20 @@ def ingresar_libro():
     print(f"📚 Libro '{nombre}' agregado exitosamente.")
 
 
+# Mostrar los libros disponibles
+def mostrar_libros():
+    if not libros:
+        print("\n📚 No hay libros en el sistema.")
+        return
+    
+    print("\n📖 Lista de libros ingresados:")
+    for i, libro in enumerate(libros, start=1):
+        print(i, ".")
+        print("Nombre:", libro["nombre"])
+        print("Año:", libro["año"])
+        print("Género:", libro["género"])
+        print("")
+
 # Menu de libros
 def menu():
     while True:
@@ -36,7 +50,7 @@ def menu():
         if opcion == "1":
             ingresar_libro()
         elif opcion == "2":
-            print("Función para mostrar un libro")
+            mostrar_libros()
         elif opcion == "3":
             print("Función para prestar un libro")
         elif opcion == "4":
@@ -46,3 +60,6 @@ def menu():
             break
         else:
             print("Opción no válida. Inténtalo de nuevo.")
+
+# Llamamos a menu() solo después de definir todas las funciones
+menu()
